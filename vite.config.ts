@@ -10,6 +10,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: "/mixtura_website",
   resolve: {
     alias: {
       // Alias @ to the src directory

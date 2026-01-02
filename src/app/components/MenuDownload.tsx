@@ -1,91 +1,102 @@
-import { Download, FileText, UtensilsCrossed } from "lucide-react";
+import { useState } from "react";
+
+import menu00 from "../../assets/menu/menu_00.jpg";
+import menu01 from "../../assets/menu/menu_01.png";
+import menu02 from "../../assets/menu/menu_02.jpg";
+import menu03 from "../../assets/menu/menu_03.jpg";
+import menu04 from "../../assets/menu/menu_04.jpg";
+import menu05 from "../../assets/menu/menu_05.jpg";
+import menu06 from "../../assets/menu/menu_06.jpg";
+import menu07 from "../../assets/menu/menu_07.jpg";
+import menu08 from "../../assets/menu/menu_08.jpg";
+import menu09 from "../../assets/menu/menu_09.jpg";
+import menu10 from "../../assets/menu/menu_10.jpg";
+import menu11 from "../../assets/menu/menu_11.jpg";
+import menu12 from "../../assets/menu/menu_12.jpg";
+import menu13 from "../../assets/menu/menu_13.jpg";
+import menu14 from "../../assets/menu/menu_14.jpg";
+import menu15 from "../../assets/menu/menu_15.jpg";
+
+const menuImages = [
+  menu00,
+  menu01,
+  menu02,
+  menu03,
+  menu04,
+  menu05,
+  menu06,
+  menu07,
+  menu08,
+  menu09,
+  menu10,
+  menu11,
+  menu12,
+  menu13,
+  menu14,
+  menu15
+];
 
 export function MenuDownload() {
-  // Replace this URL with your actual PDF menu link
-  const menuPdfUrl = "YOUR_MENU_PDF_URL_HERE";
-
-  const handleDownload = () => {
-    window.open(menuPdfUrl, '_blank');
-  };
+  const [activeImage, setActiveImage] = useState<string | null>(null);
 
   return (
-    <section id="menu" className="py-24 bg-gradient-to-br from-[#2c3e50] to-[#34495e] relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-40 h-40 border-2 border-white rounded-full"></div>
-        <div className="absolute bottom-20 right-20 w-60 h-60 border-2 border-white rounded-full"></div>
-        <div className="absolute top-1/2 right-1/3 w-32 h-32 border-2 border-white transform rotate-45"></div>
-      </div>
+    <section id="menu" className="py-24 bg-gradient-to-br from-[#f7f1e3] via-[#f1e5d3] to-[#ead9c1]">
+      <div className="container mx-auto px-4">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="mb-4 text-[#3d2b1f]">Nuestro Menu</h2>
+          <p className="text-[#5b4634] mb-12 max-w-2xl mx-auto">
+            Explora cada pagina y haz clic para verla en grande.
+          </p>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Icon decoration */}
-          <div className="mb-8 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-[#d64933] blur-2xl opacity-50 rounded-full"></div>
-              <div className="relative bg-white/10 backdrop-blur-sm p-6 rounded-full border-2 border-white/30">
-                <UtensilsCrossed className="w-16 h-16 text-white" />
-              </div>
-            </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {menuImages.map((image, index) => (
+              <button
+                key={image}
+                type="button"
+                onClick={() => setActiveImage(image)}
+                className="group relative overflow-hidden rounded-2xl shadow-xl border border-white/50 bg-white/60 backdrop-blur transition-transform duration-300 hover:-translate-y-2"
+                aria-label={`Abrir pagina ${index + 1} del menu`}
+              >
+                <img
+                  src={image}
+                  alt={`Pagina ${index + 1} del menu`}
+                  className="h-52 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+              </button>
+            ))}
           </div>
-
-          {/* Title */}
-          <h2 className="mb-6 text-white">Nuestro Menú</h2>
-          
-          {/* Description */}
-          <p className="text-xl text-white/90 mb-4 max-w-2xl mx-auto">
-            Descubre nuestra exquisita selección de platos de fusión japonesa
-          </p>
-          <p className="text-white/70 mb-12 max-w-xl mx-auto">
-            Desde sushi artesanal hasta creaciones únicas que combinan lo mejor de Japón con toques mediterráneos
-          </p>
-
-          {/* Download Card */}
-          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-2xl mx-auto transform hover:scale-105 transition-transform duration-300">
-            <div className="flex items-center justify-center mb-6">
-              <FileText className="w-20 h-20 text-[#d64933]" />
-            </div>
-            
-            <h3 className="mb-4 text-gray-800">Carta Completa</h3>
-            
-            <p className="text-gray-600 mb-8">
-              Descarga nuestro menú completo en formato PDF para explorar todos nuestros platos, precios y opciones especiales
-            </p>
-
-            {/* Download Button */}
-            <button
-              onClick={handleDownload}
-              className="group relative inline-flex items-center gap-3 bg-[#d64933] hover:bg-[#b83a26] text-white px-10 py-5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              <Download className="w-6 h-6 group-hover:animate-bounce" />
-              <span className="font-semibold text-lg">Descargar Menú PDF</span>
-            </button>
-
-            {/* Additional info */}
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-600">
-                <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-[#d64933] rounded-full"></div>
-                  <span>Opciones vegetarianas</span>
-                </div>
-                <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-[#d64933] rounded-full"></div>
-                  <span>Sin gluten disponible</span>
-                </div>
-                <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-[#d64933] rounded-full"></div>
-                  <span>Carta de alérgenos</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom note */}
-          <p className="mt-8 text-white/60 text-sm">
-            ¿Tienes alguna alergia o preferencia alimentaria? Háznoslo saber al hacer tu reserva
-          </p>
         </div>
       </div>
+
+      {activeImage ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setActiveImage(null)}
+        >
+          <div
+            className="relative max-h-[90vh] w-full max-w-5xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setActiveImage(null)}
+              className="absolute -top-10 right-0 text-white text-sm tracking-wide"
+              aria-label="Cerrar vista ampliada"
+            >
+              Cerrar
+            </button>
+            <img
+              src={activeImage}
+              alt="Menu ampliado"
+              className="w-full max-h-[90vh] object-contain rounded-xl shadow-2xl"
+            />
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

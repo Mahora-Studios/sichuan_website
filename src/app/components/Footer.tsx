@@ -1,4 +1,4 @@
-import logo from "figma:asset/91483bcc9953362a8455db4bc6ae102d5abcfa84.png";
+import logo from "../../assets/logo.png";
 
 export function Footer() {
   return (

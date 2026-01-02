@@ -1,5 +1,4 @@
-import logo from "figma:asset/91483bcc9953362a8455db4bc6ae102d5abcfa84.png";
-
+import logo from "../../assets/logo.png";
 export function Header() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -9,7 +8,7 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 bg-white backdrop-blur-sm z-50 shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <img 
